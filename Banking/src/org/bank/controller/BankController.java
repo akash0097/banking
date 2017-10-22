@@ -1,6 +1,8 @@
-package org.bank.main.controller;
+package org.bank.controller;
 
-import org.bank.model.UserForm;
+import org.bank.model.Customer;
+import org.bank.service.BankServices;
+import org.bank.service.IBankServices;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,35 +10,27 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class BankController {
+	
+	private IBankServices bankService;
+	
 	public BankController() {
-		System.out.println("Loading Controller");
+		// TODO Auto-generated constructor stub
+		bankService = new BankServices();
 	}
 	
 	@RequestMapping("/login")
 	public ModelAndView login(){
 		System.out.println("In login");
 		ModelAndView model = new  ModelAndView("login");
-		UserForm user = new UserForm();
-		model.addObject("username", "MyBank");
-		model.addObject("user", user);
-		return model;
-	}
-	
-	@RequestMapping("/index")
-	public ModelAndView index(@ModelAttribute("user") UserForm user){
-		System.out.println("In Index " + user.getFirstName());
-		ModelAndView model = new ModelAndView("login");
-		model.addObject("username", user.getFirstName());
-		model.addObject("user", user);
 		return model;
 	}
 	
 	@RequestMapping("/home")
-	public ModelAndView home(@ModelAttribute("user") UserForm user){
-		System.out.println("In Home" + user.getFirstName());
+	public ModelAndView home(@ModelAttribute("user") Customer customer){
+		System.out.println("In Home" + customer.getFirstName());
 		ModelAndView model = new  ModelAndView("home");
-		model.addObject("username", user.getFirstName());
-		model.addObject("user",user);
+		model.addObject("username", customer.getFirstName());
+		model.addObject("user",customer);
 		return model;
 	}
 	
@@ -46,6 +40,11 @@ public class BankController {
 		ModelAndView model = new  ModelAndView("account");
 		return model;
 	}
-	
+	@RequestMapping("/newuser")
+	public ModelAndView newuser() {
+		System.out.println("in new user");
+		ModelAndView model=new ModelAndView("newuser");
+		return model;
+	}
 	
 }

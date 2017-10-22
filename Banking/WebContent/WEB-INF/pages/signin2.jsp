@@ -25,67 +25,66 @@
 					<label>Type Of Work:</label>
 					 <input list="Works" name="Works">
   						<datalist id="Works">
-  							<option value="Private Sector">
-  							<option value="Public Sector">
-  							<option value="Government Sector">
-    						<option value="Business">
-    						<option value="Self-Employed">
-   						 	<option value="Professional">
-   						 	<option value="Retired">
-   						 	<option value="Others">
+  							<option value="Private Sector"/>
+  						    <option value="Public Sector"/>
+  							<option value="Government Sector"/>
+    						<option value="Business"/>
+    						<option value="Self-Employed"/>
+   						 	<option value="Professional"/>
+   						 	<option value="Retired"/>
+   						 	<option value="Others"/>
   						</datalist>
 					
 					
 				<label>Source Of Income:</label>
-					 <input list="Income" name="Income">
+					 <input list="Income" name="Income"/>
   						<datalist id="Income">
-    						<option value="Business">
-    						<option value="Labour">
-   						 	<option value="Service">
-   						 	<option value="Salary">
-   						 	<option value="Others">
+    						<option value="Business"/>
+    						<option value="Labour"/>
+   						 	<option value="Service"/>
+   						 	<option value="Salary"/>
+   						 	<option value="Others"/>
   						</datalist>
 					
 							
 					<label>Annual Salary:</label>
-					 <input list="Salary" name="Salary">
+					 <input list="Salary" name="Salary"/>
   						<datalist id="Salary">
-    						<option value="Below 1 lakh">
-    						<option value="1 lakh to 5 lakh">
-   						 	<option value="5 lakh to 15 lakh">
-   						 	<option value="Above 15 lakh">
+    						<option value="Below 1 lakh"/>
+    						<option value="1 lakh to 5 lakh"/>
+   						 	<option value="5 lakh to 15 lakh"/>
+   						 	<option value="Above 15 lakh"/>
   						</datalist>
 					
 					<label>Financial Assets:</label>
-						<input list="FAssets" name="FAssets">
+						<input list="FAssets" name="FAssets"/>
   						<datalist id="FAssets">
-    						<option value="correct values dalna h">
-    						<option value="1 lakh to 5 lakh">
-   						 	<option value="5 lakh to 15 lakh">
-   						 	<option value="Above 15 lakh">
+    						<option value="correct values dalna h"/>
+    						<option value="1 lakh to 5 lakh"/>
+   						 	<option value="5 lakh to 15 lakh"/>
+   						 	<option value="Above 15 lakh"/>
   						</datalist>
 					
 
 					<label>Nominee:</label>
-						<input list="Nominee" name="Nominee">
+						<input list="Nominee" name="Nominee"/>
   						<datalist id="Nominee">
-    						<option value="Father">
-    						<option value="Mother">
-   						 	<option value="Brother">
-   						 	<option value="Sister">
-   						 	<option value="Husband">
+    						<option value="Father"/>
+    						<option value="Mother"/>
+   						 	<option value="Brother"/>
+   						 	<option value="Sister"/>
+   						 	<option value="Husband"/>
   						</datalist>
-										
-					
-					
-				<input type="Submit" class="btn btn-default" style="float: right;" name="Submit"/>
 				</form>
-			</div>
-			<div class="col-sm-3">image</div>
-		</div>
-  </div>
+				</div>
 
+				<input type="Submit" class="btn btn-default" style="float: right;" name="Submit"/>
+			</div>
+	</div>
+				
+			
 <%@include file="includes/footer.html"%>
 
 </body>
 </html>
+				

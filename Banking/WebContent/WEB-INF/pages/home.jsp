@@ -39,12 +39,19 @@
 				</div>
 			</div>
 		</div>	
-			<div class="col-sm-5"></div>
-			 	<div>image</div>
-			 	<div>image</div>
-			 	<div>image</div>
+			<div class="col-sm-5">
+			 	
+			<table>
+			<tr> <td>
+			<img alt="img1" src="background.jpg">
+			</td></tr>
 			
-			<div class="col-sm-3"></div>
+			</table>
+			 	
+			</div>
+			<div class="col-sm-3">
+			<div>image</div>
+			</div>
 		</div>
 	</div>
 
