@@ -3,17 +3,47 @@ package org.bank.model;
 import java.sql.Timestamp;
 import java.util.*;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="TRANSACTION")
 public class Transaction {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="TRANSACTION_ID")
 	private long transactionID;
+	
+	@Column(name="TRANSACTION_DATE")
 	private Date transactionDate;
+	
+	@Column(name="TRANSACTION_TMSTMP")
 	private Timestamp transactionTimestamp;
+	
+	@Column(name="IFSC_CODE")
 	private long ifscCode;
+	
+	@Column(name="BENIFICIARY_ACC_NO")
 	private long benificiaryAccNo;
+	
+	@Column(name="BENIFICIARY_NAME")
 	private String benificiaryName;
+	
+	@Column(name="BENIFICIARY_TYPE")
 	private String benificiaryType;
+	
+	@Column(name="DESCRIPTION")
 	private String description;
+	
+	@Column(name="TRANSACTION_AMT")
 	private double transactionAmount;
+	
+	@Column(name="TRANSACTION_TYPE")
 	private String transactionType;
 	
 	public Transaction() {	}
@@ -35,7 +65,23 @@ public class Transaction {
 		this.transactionType = transactionType;
 	}
 
+	public Transaction(Date transactionDate, Timestamp transactionTimestamp, long ifscCode,
+			long benificiaryAccNo, String benificiaryName, String benificiaryType, String description,
+			double transactionAmount, String transactionType) {
+		super();
+		this.transactionDate = transactionDate;
+		this.transactionTimestamp = transactionTimestamp;
+		this.ifscCode = ifscCode;
+		this.benificiaryAccNo = benificiaryAccNo;
+		this.benificiaryName = benificiaryName;
+		this.benificiaryType = benificiaryType;
+		this.description = description;
+		this.transactionAmount = transactionAmount;
+		this.transactionType = transactionType;
+	}
 
+
+	
 	public long getTransactionID() {
 		return transactionID;
 	}

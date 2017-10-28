@@ -21,17 +21,19 @@
 		<div class="row">
 			<div class="col-sm-3">image</div>
 			<div class="col-sm-5">
-			<fieldset style="height: 500px; width: 500px;">
-			<legend>FORM</legend>
-				<form:form action="${pageContext.request.contextPath}/home" method="post" commandName="user">
-					<label>First name:</label>
-					<form:input type="text" class="form-control" path="firstName" placeholder="First Name" requried="true"/><br>
-					<label>Last name:</label>
-					<form:input type="text" class="form-control" path="lastName" placeholder="Last Name" requried="true"/><br>
-				<button type="button" class="btn btn-default" style="float: right;">Sign Up</button>
-			    <button type="submit" class="btn btn-default" style="float: right;">Login</button>
-				</form:form>
-				</fieldset>
+					<legend>User Login</legend>
+				 	<form action="${pageContext.request.contextPath}/home" method="post" <%-- commandName="user" --%>>
+					
+					<label>User name:</label>
+					<input type="text" class="form-control" name="username" placeholder="User Name" requried="true"/><br>
+					
+					<label>Password:</label>
+					<input type="password" class="form-control" name="password" placeholder="Password" requried="true"/><br>
+				
+					<button type="button" class="btn btn-default" style="float: left;">Sign Up</button> 
+			    
+			    	<button type="submit" class="btn btn-default" style="float: right;">Login</button>
+				</form>
 			</div>
 			<div class="col-sm-3">image</div>
 		</div>

@@ -3,26 +3,61 @@ package org.bank.model;
 import java.sql.Timestamp;
 import java.util.*;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="ACCOUNT")
 public class Account
 {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="ACCOUNT_ID")
 	private long accountID;
+	
+	@Column(name="ACCOUNT_NUMBER")
 	private long accountNumber;
+	
+	@Column(name="ACCOUNT_TYPE")
 	private String accountType;
+	
+	@Column(name="CRTED_TMSTMP")
 	private Timestamp createTimestamp;
+	
+	@Column(name="UPTD_TMSTMP")
 	private Timestamp updateTimestamp;
+	
+	@Column(name="BALANCE")
 	private double balance;
+	
+	@OneToOne(cascade=CascadeType.ALL)
 	private RateOfInterest rateOfInterest;
+	
+	@OneToMany(cascade= CascadeType.ALL)
+	@JoinTable(name="ACCOUNT_CARD_DETAILS", joinColumns = {@JoinColumn(name="ACCOUNT_ID") }, inverseJoinColumns = { @JoinColumn(name="CARD_ID")})
 	private List<Cards> cardDetails;
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinTable(name="ACCOUNT_TRANSACTION_DETAILS", joinColumns = {@JoinColumn(name="ACCOUNT_ID") }, inverseJoinColumns = { @JoinColumn(name="TRASACTION_ID")})
 	private List<Transaction> transactionDetails;
 
 	
 	public Account() {}
 
-	public Account(long accountID, long accountNumber, String accountType, Timestamp createTimestamp,
+	public Account(long accountID,long accountNumber, String accountType, Timestamp createTimestamp,
 			Timestamp updateTimestamp, double balance, RateOfInterest rateOfInterest, List<Cards> cardDetails,
 			List<Transaction> transactionDetails) {
 		super();
-		this.accountID = accountID;
+		this.accountID=accountID;
 		this.accountNumber = accountNumber;
 		this.accountType = accountType;
 		this.createTimestamp = createTimestamp;
@@ -32,7 +67,20 @@ public class Account
 		this.cardDetails = cardDetails;
 		this.transactionDetails = transactionDetails;
 	}
-
+	
+	public Account(long accountNumber, String accountType, Timestamp createTimestamp,
+			Timestamp updateTimestamp, double balance, RateOfInterest rateOfInterest, List<Cards> cardDetails,
+			List<Transaction> transactionDetails) {
+		super();
+		this.accountNumber = accountNumber;
+		this.accountType = accountType;
+		this.createTimestamp = createTimestamp;
+		this.updateTimestamp = updateTimestamp;
+		this.balance = balance;
+		this.rateOfInterest = rateOfInterest;
+		this.cardDetails = cardDetails;
+		this.transactionDetails = transactionDetails;
+	}
 
 	public long getAccountID() {
 		return accountID;

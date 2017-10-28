@@ -1,27 +1,79 @@
 package org.bank.model;
 
 import java.util.*;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 import java.sql.Timestamp;
 
+@Entity
+@Table(name="CUSTOMER")
 public class Customer 
 {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="CUSTOMER_ID")
 	private long customerID;
+	
+	@Column(name="SALUTATION")
 	private String slautation;
+	
+	@Column(name="USER_NAME")
 	private String userName;
+	
+	@Column(name="PASSWORD")
 	private String password;
+	
+	@Column(name="FIRST_NAME")
 	private String firstName;
+
+	@Column(name="MIDDLE_NAME")
 	private String middleName;
+	
+	@Column(name="LAST_NAME")
 	private String lastName;
+	
+	@Column(name="ADDRESS")
 	private String address;
+
+	@Column(name="DOB")
 	private Date dob;
+	
+	@Column(name="EMAIL_ID")
 	private String email;
+	
+	@Column(name="MOBILE_NUMBER")
 	private long mobileNumber;
+	
+	@Column(name="PANCARD")
 	private long pancard;
+	
+	@Column(name="AADHAR_CARD")
 	private long aadharcard;
+	
+	@Column(name="NOMINEE_NAME")
 	private String nomineeName;
+	
+	@Column(name="NOMINEE_RELATION")
 	private String nomineeRelation;
+	
+	@Column(name="CRTED_TMSTMP")
 	private Timestamp createdTimestamp;
+	
+	@Column(name="UPTD_TMSTMP")
 	private Timestamp updateTimestamp;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "CUSTOMER_ACCOUNT_DETAILS", joinColumns = {@JoinColumn(name="ACCOUNT_ID") }, inverseJoinColumns = { @JoinColumn(name="CUSTOMER_ID")})
 	private List<Account> accounts;
 	
 	
@@ -51,6 +103,31 @@ public class Customer
 		this.updateTimestamp = updateTimestamp;
 		this.accounts = accounts;
 	}
+	
+	public Customer(String slautation, String userName, String password, String firstName,
+			String middleName, String lastName, String address, Date dob, String email, long mobileNumber, long pancard,
+			long aadharcard, String nomineeName, String nomineeRelation, Timestamp createdTimestamp,
+			Timestamp updateTimestamp, List<Account> accounts) {
+		super();
+		this.slautation = slautation;
+		this.userName = userName;
+		this.password = password;
+		this.firstName = firstName;
+		this.middleName = middleName;
+		this.lastName = lastName;
+		this.address = address;
+		this.dob = dob;
+		this.email = email;
+		this.mobileNumber = mobileNumber;
+		this.pancard = pancard;
+		this.aadharcard = aadharcard;
+		this.nomineeName = nomineeName;
+		this.nomineeRelation = nomineeRelation;
+		this.createdTimestamp = createdTimestamp;
+		this.updateTimestamp = updateTimestamp;
+		this.accounts = accounts;
+	}
+
 
 	
 	public long getCustomerID() {

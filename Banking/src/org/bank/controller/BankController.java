@@ -34,17 +34,13 @@ public class BankController {
 		return model;
 	}
 	
-	@RequestMapping("/account")
-	public ModelAndView account(){
-		System.out.println("In account");
-		ModelAndView model = new  ModelAndView("account");
-		return model;
-	}
+	
 	@RequestMapping("/newuser")
 	public ModelAndView newuser() {
 		System.out.println("in new user");
 		ModelAndView model=new ModelAndView("newuser");
 		return model;
 	}
+
 	
 }

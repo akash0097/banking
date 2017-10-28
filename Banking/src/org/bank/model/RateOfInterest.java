@@ -1,10 +1,28 @@
 package org.bank.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="RATE_OF_INTEREST")
 public class RateOfInterest 
 {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="RATE_OF_INTEREST_ID")
 	private long rateOfInetrestID;
+	
+	@Column(name="NAME")
 	private String name;
+	
+	@Column(name="DESCRIPTION")
 	private String description;
+	
+	@Column(name="INTEREST_RATE")
 	private float interestRate;
 	
 	
@@ -18,6 +36,14 @@ public class RateOfInterest
 		this.interestRate = interestRate;
 	}
 
+	public RateOfInterest(String name, String description, float interestRate) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.interestRate = interestRate;
+	}
+
+	
 	public long getRateOfInetrestID() {
 		return rateOfInetrestID;
 	}

@@ -2,13 +2,35 @@ package org.bank.model;
 
 import java.util.*;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="CARDS")
 public class Cards {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="CARD_ID")
 	private long cardID;
+	
+	@Column(name="CARD_NAME")
 	private String cardName;
+	
+	@Column(name="CVV_NUMBER")
 	private long cvvNumber;
+	
+	@Column(name="CARD_NUMBER")
 	private long cardNumber;
+	
+	@Column(name="EXPIRY_DETAILS")
 	private Date expiryDate;
+	
+	@Column(name="CARD_LIMIT")
 	private Double cardLimit;
 	
 	public Cards() {}
@@ -24,6 +46,14 @@ public class Cards {
 		this.cardLimit = cardLimit;
 	}
 
+	public Cards(String cardName, long cvvNumber, long cardNumber, Date expiryDate, Double cardLimit) {
+		super();
+		this.cardName = cardName;
+		this.cvvNumber = cvvNumber;
+		this.cardNumber = cardNumber;
+		this.expiryDate = expiryDate;
+		this.cardLimit = cardLimit;
+	}
 
 	public long getCardID() {
 		return cardID;
