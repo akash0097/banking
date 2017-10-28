@@ -3,6 +3,7 @@ package org.bank.controller;
 import org.bank.model.Customer;
 import org.bank.service.BankServices;
 import org.bank.service.IBankServices;
+import org.bank.util.HibernateUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,12 +14,14 @@ public class BankController {
 	
 	private IBankServices bankService;
 	
+	
 	public BankController() {
-		// TODO Auto-generated constructor stub
 		bankService = new BankServices();
+		HibernateUtil util = new HibernateUtil();
+		util.getSessionFactory().isOpen();
 	}
 	
-	@RequestMapping("/login")
+	@RequestMapping("/")
 	public ModelAndView login(){
 		System.out.println("In login");
 		ModelAndView model = new  ModelAndView("login");

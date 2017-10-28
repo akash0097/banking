@@ -40,6 +40,7 @@ public class Account
 	private double balance;
 	
 	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="RATE_OF_INTEREST")
 	private RateOfInterest rateOfInterest;
 	
 	@OneToMany(cascade= CascadeType.ALL)

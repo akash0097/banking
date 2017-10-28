@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import java.sql.Timestamp;
@@ -26,12 +27,6 @@ public class Customer
 	
 	@Column(name="SALUTATION")
 	private String slautation;
-	
-	@Column(name="USER_NAME")
-	private String userName;
-	
-	@Column(name="PASSWORD")
-	private String password;
 	
 	@Column(name="FIRST_NAME")
 	private String firstName;
@@ -72,6 +67,10 @@ public class Customer
 	@Column(name="UPTD_TMSTMP")
 	private Timestamp updateTimestamp;
 	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="USER_DETAIL")
+	private User user;
+	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "CUSTOMER_ACCOUNT_DETAILS", joinColumns = {@JoinColumn(name="ACCOUNT_ID") }, inverseJoinColumns = { @JoinColumn(name="CUSTOMER_ID")})
 	private List<Account> accounts;
@@ -79,15 +78,13 @@ public class Customer
 	
 	public Customer() { }
 	
-	public Customer(long customerID, String slautation, String userName, String password, String firstName,
+	public Customer(long customerID, String slautation, String firstName,
 			String middleName, String lastName, String address, Date dob, String email, long mobileNumber, long pancard,
 			long aadharcard, String nomineeName, String nomineeRelation, Timestamp createdTimestamp,
 			Timestamp updateTimestamp, List<Account> accounts) {
 		super();
 		this.customerID = customerID;
 		this.slautation = slautation;
-		this.userName = userName;
-		this.password = password;
 		this.firstName = firstName;
 		this.middleName = middleName;
 		this.lastName = lastName;
@@ -104,14 +101,12 @@ public class Customer
 		this.accounts = accounts;
 	}
 	
-	public Customer(String slautation, String userName, String password, String firstName,
+	public Customer(String slautation, String firstName,
 			String middleName, String lastName, String address, Date dob, String email, long mobileNumber, long pancard,
 			long aadharcard, String nomineeName, String nomineeRelation, Timestamp createdTimestamp,
 			Timestamp updateTimestamp, List<Account> accounts) {
 		super();
 		this.slautation = slautation;
-		this.userName = userName;
-		this.password = password;
 		this.firstName = firstName;
 		this.middleName = middleName;
 		this.lastName = lastName;
@@ -144,22 +139,6 @@ public class Customer
 
 	public void setSlautation(String slautation) {
 		this.slautation = slautation;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public String getFirstName() {
