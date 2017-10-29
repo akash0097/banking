@@ -1,6 +1,7 @@
 package org.bank.controller;
 
 import org.bank.model.Customer;
+import org.bank.model.User;
 import org.bank.service.BankServices;
 import org.bank.service.IBankServices;
 import org.bank.util.HibernateUtil;
@@ -17,8 +18,7 @@ public class BankController {
 	
 	public BankController() {
 		bankService = new BankServices();
-		HibernateUtil util = new HibernateUtil();
-		util.getSessionFactory().isOpen();
+		HibernateUtil.getSession().isOpen();
 	}
 	
 	@RequestMapping("/")
@@ -29,11 +29,16 @@ public class BankController {
 	}
 	
 	@RequestMapping("/home")
-	public ModelAndView home(@ModelAttribute("user") Customer customer){
-		System.out.println("In Home" + customer.getFirstName());
-		ModelAndView model = new  ModelAndView("home");
-		model.addObject("username", customer.getFirstName());
-		model.addObject("user",customer);
+	public ModelAndView home(@ModelAttribute("user") User user){
+		System.out.println("In Home");
+		ModelAndView model;
+		
+		boolean isValidUser = bankService.isValidUser(user);
+		if(isValidUser)
+			 model = new  ModelAndView("home");
+		else
+			model = new ModelAndView("newuser");
+			
 		return model;
 	}
 	

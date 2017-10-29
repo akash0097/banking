@@ -14,3 +14,7 @@ function opentab(evt, Detials) {
     document.getElementById(Detials).style.display = "block";
     evt.currentTarget.className += " active";
 }
+
+function getSignUpPage() {
+	console.log("in getSignUpPage methd")
+}

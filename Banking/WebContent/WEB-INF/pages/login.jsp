@@ -30,7 +30,7 @@
 					<label>Password:</label>
 					<input type="password" class="form-control" name="password" placeholder="Password" requried="true"/><br>
 				
-					<button type="button" class="btn btn-default" style="float: left;">Sign Up</button> 
+					<button type="button" class="btn btn-default" style="float: left;" onclick="getSignUpPage()">Sign Up</button> 
 			    
 			    	<button type="submit" class="btn btn-default" style="float: right;">Login</button>
 				</form>
